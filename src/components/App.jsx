@@ -12,6 +12,27 @@ class Phonebook extends React.Component {
     filter: ''
   };
 
+  componentDidMount = () => {
+    console.log('App componentDidMount');
+
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate = (prevPropss, prevState) => {
+    console.log('App componentDidUpdate');
+
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('Обновилось поле contacts, записываю contacts в хранилище');
+
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   addContact = (name, number) => {
     const contact = {
       id: nanoid(),
@@ -64,6 +85,8 @@ class Phonebook extends React.Component {
   }
     
   render() {
+    console.log('App render');
+
     const { filter } = this.state;
 
     const visibleContacts = this.getVisibleContacts();
