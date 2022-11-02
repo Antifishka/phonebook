@@ -42,10 +42,10 @@ class Phonebook extends React.Component {
 
     const { contacts } = this.state;
 
-    const normalizedName = name.toLocaleLowerCase();
+    const normalizedName = name.toLowerCase();
 
     const checkByName = contacts.find(contact =>
-      contact.name.toLocaleLowerCase() === normalizedName);
+      contact.name.toLowerCase() === normalizedName);
 
     if (checkByName) {
       return alert(`${name} is already in contacts`);

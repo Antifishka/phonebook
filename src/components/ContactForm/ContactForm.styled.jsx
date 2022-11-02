@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { Form, Field } from 'formik';
 
-export const BoxForm = styled.form`
+export const BoxForm = styled(Form)`
     display:flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -21,7 +22,7 @@ export const FieldForm = styled.label`
     gap: 4px;
 `;
 
-export const InputForm = styled.input`
+export const InputForm = styled(Field)`
     border: 1px solid #c9c5c5;
 `;
 
@@ -39,4 +40,8 @@ export const BtnForm = styled.button`
         background-color: blue;
         border: none;
     }
+`;
+
+export const ErrorText = styled.p`
+    color: red;
 `;
