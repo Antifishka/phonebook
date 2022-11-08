@@ -62,17 +62,11 @@ class Phonebook extends React.Component {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }))
-
-    this.resetFilter();
   }
 
   changeFilter = (e) => {
     this.setState({ filter: e.currentTarget.value })
   }
-
-  resetFilter = () => {
-    this.setState({ filter: '' });
-    }
 
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
