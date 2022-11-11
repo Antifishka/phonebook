@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { BoxFilter, InputFilter } from "./Filter.styled";
 import PropTypes from 'prop-types';
 

@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { BoxForm, FieldForm, InputForm, BtnForm, ErrorText } from './ContactForm.styled';
 import PropTypes from 'prop-types';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, useFormik } from 'formik';
 import * as yup from 'yup';
 
 // library yup
@@ -22,60 +21,114 @@ const schema = yup.object().shape({
             'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +')
         .required('Number is required'),
 });
-
+ 
 // Library formik
-const INITIAL_VALUES = {
-    name: '',
-    number: '',
-};
-    
-export class ContactForm extends Component {
-    handleSubmit = (values, actions) => {
-        console.log(values);
-        
-        const { name, number } = values;
+const ContactForm  = ({onSubmit}) => {
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            number: '',
+        },
 
-        this.props.onSubmit(name, number);
+        onSubmit: (values, actions) => {
+            console.log(values);
 
-        const { resetForm } = actions;
+            const { name, number } = values;
 
-        resetForm();
-    };
+            onSubmit(name, number);  //проп из App
 
-    render() {
-        const nameId = nanoid();
-        const numberId = nanoid();
+            const { resetForm } = actions;
 
-        return (
-            <Formik
-                initialValues={INITIAL_VALUES}
-                validationSchema={schema}
-                onSubmit={this.handleSubmit} >
-                <BoxForm>
-                    <FieldForm htmlFor={nameId}>Name
-                        <InputForm
-                            type="text"
-                            name="name"
-                            id={nameId} /> 
-                        <ErrorMessage
-                            name="name"
-                            render={message => <ErrorText>{message}</ErrorText>} />
+            resetForm(); 
+        },
+    });
+     
+    const nameId = nanoid();
+    const numberId = nanoid();
+
+    return (
+        <Formik
+            initialValues={formik.initialValues}
+            validationSchema={schema}
+            onSubmit={formik.handleSubmit} >
+            <BoxForm>
+                <FieldForm htmlFor={nameId}>Name
+                    <InputForm
+                        type="text"
+                        name="name"
+                        id={nameId} /> 
+                    <ErrorMessage
+                        name="name"
+                        render={message => <ErrorText>{message}</ErrorText>} />
                     </FieldForm>
-                    <FieldForm htmlFor={numberId}>Number
-                        <InputForm
-                            type="tel"
-                            name="number"
-                            id={numberId} />
-                        <ErrorMessage
-                            name="number"
-                            render={message => <ErrorText>{message}</ErrorText>} />
-                    </FieldForm>    
-                    <BtnForm type="submit">Add contact</BtnForm>        
-                </BoxForm>
-            </Formik>  
-        );
-    };
-};
+                <FieldForm htmlFor={numberId}>Number
+                    <InputForm
+                        type="tel"
+                        name="number"
+                        id={numberId} />
+                    <ErrorMessage
+                        name="number"
+                        render={message => <ErrorText>{message}</ErrorText>} />
+                </FieldForm>    
+                <BtnForm type="submit">Add contact</BtnForm>        
+            </BoxForm>
+        </Formik>  
+    );
+ };
+
+
+// const INITIAL_VALUES = {
+//     name: '',
+//     number: '',
+// };
+    
+// export class OldContactForm extends Component {
+//     handleSubmit = (values, actions) => {
+//         console.log(values);
+        
+//         const { name, number } = values;
+
+//         this.props.onSubmit(name, number);
+
+//         const { resetForm } = actions;
+
+//         resetForm();
+//     };
+
+//     render() {
+//         const nameId = nanoid();
+//         const numberId = nanoid();
+
+//         return (
+//             <Formik
+//                 initialValues={INITIAL_VALUES}
+//                 validationSchema={schema}
+//                 onSubmit={this.handleSubmit} >
+//                 <BoxForm>
+//                     <FieldForm htmlFor={nameId}>Name
+//                         <InputForm
+//                             type="text"
+//                             name="name"
+//                             id={nameId} /> 
+//                         <ErrorMessage
+//                             name="name"
+//                             render={message => <ErrorText>{message}</ErrorText>} />
+//                     </FieldForm>
+//                     <FieldForm htmlFor={numberId}>Number
+//                         <InputForm
+//                             type="tel"
+//                             name="number"
+//                             id={numberId} />
+//                         <ErrorMessage
+//                             name="number"
+//                             render={message => <ErrorText>{message}</ErrorText>} />
+//                     </FieldForm>    
+//                     <BtnForm type="submit">Add contact</BtnForm>        
+//                 </BoxForm>
+//             </Formik>  
+//         );
+//     };
+// };
     
 export default ContactForm;
 
