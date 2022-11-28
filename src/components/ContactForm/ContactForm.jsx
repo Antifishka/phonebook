@@ -1,11 +1,11 @@
 import { nanoid } from 'nanoid';
-import { BoxForm, FieldForm, InputForm, BtnForm, ErrorText } from './ContactForm.styled';
+import { BoxForm, FieldForm, InputForm, BtnForm, Error } from './ContactForm.styled';
 import PropTypes from 'prop-types';
-import { Formik, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 // library yup
-const schema = yup.object().shape({
+const basicSchema = yup.object().shape({
     name: yup
         .string()
         .min(2, 'Too Short!')
@@ -23,54 +23,53 @@ const schema = yup.object().shape({
 });
  
 // Library formik
-const INITIAL_VALUES = {
-    name: '',
-    number: '',
-};
-
-const ContactForm =({onSubmit}) => {
-    const handleSubmit = (values, actions) => {
-        console.log(values);
+const ContactForm = ({ onSubmit }) => {
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+        initialValues: {
+            name: '',
+            number: '',
+        },
+        validationSchema: basicSchema,
+        onSubmit: (values, actions) => {
+            console.log(values);
         
-        const { name, number } = values;
+            const { name, number } = values;
 
-        onSubmit(name, number);
+            onSubmit(name, number);
 
-        const { resetForm } = actions;
+            const { resetForm } = actions;
 
-        resetForm();
-    };
+            resetForm();
+        },
+    });
 
     const nameId = nanoid();
     const numberId = nanoid();
 
     return (
-        <Formik
-            initialValues={INITIAL_VALUES}
-            validationSchema={schema}
-            onSubmit={handleSubmit} >
-            <BoxForm>
-                <FieldForm htmlFor={nameId}>Name
-                    <InputForm
-                        type="text"
-                        name="name"
-                        id={nameId} /> 
-                    <ErrorMessage
-                        name="name"
-                        render={message => <ErrorText>{message}</ErrorText>} />
-                </FieldForm>
-                <FieldForm htmlFor={numberId}>Number
-                    <InputForm
-                        type="tel"
-                        name="number"
-                        id={numberId} />
-                    <ErrorMessage
-                        name="number"
-                        render={message => <ErrorText>{message}</ErrorText>} />
-                </FieldForm>    
-                <BtnForm type="submit">Add contact</BtnForm>        
-            </BoxForm>
-        </Formik>  
+        <BoxForm onSubmit={handleSubmit}>
+            <FieldForm htmlFor={nameId}>Name
+                <InputForm
+                    type="text"
+                    name="name"
+                    id={nameId}
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur} /> 
+                {errors.name && touched.name && <Error>{errors.name}</Error>}
+            </FieldForm>
+            <FieldForm htmlFor={numberId}>Number
+                <InputForm
+                    type="tel"
+                    name="number"
+                    id={numberId}
+                    value={values.number}
+                    onChange={handleChange}
+                    onBlur={handleBlur} />
+                {errors.number && touched.number &&<Error>{errors.number}</Error>}
+            </FieldForm>    
+            <BtnForm type="submit">Add contact</BtnForm>        
+        </BoxForm> 
     );
 };
     
