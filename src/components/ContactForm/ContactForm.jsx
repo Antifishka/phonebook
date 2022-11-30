@@ -1,6 +1,7 @@
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 import { nanoid } from 'nanoid';
 import { BoxForm, FieldForm, InputForm, BtnForm, Error } from './ContactForm.styled';
-import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -23,7 +24,10 @@ const basicSchema = yup.object().shape({
 });
  
 // Library formik
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
+    // Получаем ссылку на функцию отправки экшенов
+    const dispatch = useDispatch();
+
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
             name: '',
@@ -35,7 +39,9 @@ const ContactForm = ({ onSubmit }) => {
         
             const { name, number } = values;
 
-            onSubmit(name, number);
+            // Вызываем генератор экшена и передаем имя и номер контакта для поля payload
+            // Отправляем результат - экшен создания контакта
+            dispatch(addContact(name, number));
 
             const { resetForm } = actions;
 
@@ -75,6 +81,3 @@ const ContactForm = ({ onSubmit }) => {
     
 export default ContactForm;
 
-ContactForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-};

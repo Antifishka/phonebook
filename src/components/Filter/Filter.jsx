@@ -1,19 +1,24 @@
-// import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getFilter } from "../../redux/selectors";
+import { setFilter } from "../../redux/filterSlice";
 import { BoxFilter, InputFilter } from "./Filter.styled";
-import PropTypes from 'prop-types';
 
-export const Filter = ({filter, onChange}) =>
-    <BoxFilter htmlFor="">Find contacts by name
-        <InputFilter
-            type="text"
-            name="filter"
-            value={filter}
-            onChange={onChange}
-        />
-    </BoxFilter>
-    ;
+export const Filter = ({ onChange }) => {
+    const filter = useSelector(getFilter);
+    const dispatch = useDispatch();
 
-Filter.propTypes = {
-    filter: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-};    
+    const changeFilter = e => {
+        dispatch(setFilter(e.currentTarget.value));
+    };
+
+    return (
+        <BoxFilter htmlFor="">Find contacts by name
+            <InputFilter
+                type="text"
+                name="filter"
+                value={filter}
+                onChange={changeFilter}
+            />
+        </BoxFilter>
+    );
+};   
