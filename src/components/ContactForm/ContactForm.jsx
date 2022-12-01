@@ -1,5 +1,6 @@
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { addContact } from "redux/contactsSlice";
+import { getContacts } from "redux/selectors";
 import { nanoid } from 'nanoid';
 import { BoxForm, FieldForm, InputForm, BtnForm, Error } from './ContactForm.styled';
 import { useFormik } from 'formik';
@@ -25,6 +26,7 @@ const basicSchema = yup.object().shape({
  
 // Library formik
 const ContactForm = () => {
+    const contacts = useSelector(getContacts);
     // Получаем ссылку на функцию отправки экшенов
     const dispatch = useDispatch();
 
@@ -34,16 +36,21 @@ const ContactForm = () => {
             number: '',
         },
         validationSchema: basicSchema,
-        onSubmit: (values, actions) => {
-            console.log(values);
-        
-            const { name, number } = values;
+        onSubmit: ({ name, number }, { resetForm }) => {
+            console.log(name, number);
+
+            const normalizedName = name.toLowerCase();
+
+            const checkByName = contacts.find(contact =>
+                contact.name.toLowerCase() === normalizedName);
+
+            if (checkByName) {
+            return alert(`${name} is already in contacts`);
+            };
 
             // Вызываем генератор экшена и передаем имя и номер контакта для поля payload
             // Отправляем результат - экшен создания контакта
             dispatch(addContact(name, number));
-
-            const { resetForm } = actions;
 
             resetForm();
         },

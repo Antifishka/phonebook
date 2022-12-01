@@ -3,7 +3,7 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from 'redux-persist'
 
 const contactsInitialState = {
-  contacts: [],
+    contacts: [],
 };
 
 const contactsSlice = createSlice({
@@ -12,7 +12,7 @@ const contactsSlice = createSlice({
     reducers: {
         addContact: {
             reducer(state, action) {
-                state.push(action.payload);
+                state.contacts.push(action.payload);
             },
             prepare(name, number) {
                 return {
@@ -25,7 +25,8 @@ const contactsSlice = createSlice({
             },
         },
         deleteContact(state, action) {
-            return state.filter(contact => contact.id !== action.payload);
+            const index = state.contacts.findIndex(contact => contact.id === action.payload);
+            state.contacts.splice(index, 1);
         },
     },
 });
@@ -35,6 +36,7 @@ const persistConfig = {
   storage,
 };
 
+// Экспортируем генераторы экшенов и редюсер
 const contactsReducer = contactsSlice.reducer;
 export const persistedContactsReducer = persistReducer(persistConfig, contactsReducer);
 export const { addContact, deleteContact } = contactsSlice.actions;

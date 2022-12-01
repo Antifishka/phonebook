@@ -15,7 +15,6 @@ export const Filter = ({ onChange }) => {
         <BoxFilter htmlFor="">Find contacts by name
             <InputFilter
                 type="text"
-                name="filter"
                 value={filter}
                 onChange={changeFilter}
             />
