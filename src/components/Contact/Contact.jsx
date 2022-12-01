@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsSlice";
-import { ContactBtn } from "./Contact.styled";
+import { ContactText, ContactBtn } from "./Contact.styled";
+import { AiOutlineUserAdd } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 
 export const Contact = ({ id, name, number } ) => {
@@ -12,7 +13,9 @@ export const Contact = ({ id, name, number } ) => {
   
   return (
     <>
-      <p>{name}: {number}</p>
+      <ContactText>
+        <AiOutlineUserAdd size={18} color={"#a09c9c"} />
+        {name}: {number}</ContactText>
       <ContactBtn onClick={handleDelete}>Delete</ContactBtn>
     </>
   );

@@ -17,6 +17,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+
+  color: #2f2f37;
 }
 
 code {
@@ -42,18 +44,16 @@ li{
 `;
 
 export const Container = styled.div`
-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-color: #010101;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+  text-align: center;
 `;
 
 export const TitlePhonebook = styled.h1`
-margin-bottom: 20px;
+margin-bottom: 16px;
 `;
 
 export const TitleContacts = styled.h2`
-margin-bottom: 20px;
+margin-bottom: 16px;
 `;

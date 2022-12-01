@@ -67,6 +67,7 @@ const ContactForm = () => {
                     name="name"
                     id={nameId}
                     value={values.name}
+                    placeholder="Ivan Petrov"
                     onChange={handleChange}
                     onBlur={handleBlur} /> 
                 {errors.name && touched.name && <Error>{errors.name}</Error>}
@@ -77,6 +78,7 @@ const ContactForm = () => {
                     name="number"
                     id={numberId}
                     value={values.number}
+                    placeholder="+38-(012)-345-67-89"
                     onChange={handleChange}
                     onBlur={handleBlur} />
                 {errors.number && touched.number &&<Error>{errors.number}</Error>}

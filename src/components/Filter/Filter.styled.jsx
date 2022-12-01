@@ -1,18 +1,22 @@
 import styled from '@emotion/styled';
 
-export const BoxFilter = styled.label`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 4px;
-    
-    width: 280px;
-    margin-bottom: 20px;
+export const WrapperFilter = styled.div`
+    text-align: left;
+    margin-bottom: 16px;
+    min-width: 288px;
+`;
 
-    font-size: 16px;
+export const FieldFilter = styled.label`
+    width: 100%;
 `;
 
 export const InputFilter = styled.input`
-    border: 1px solid #c9c5c5;
+    margin-top: 4px; 
+    padding: 8px;
+    width: 100%;
+    font: inherit;
+
+    ::placeholder {
+        font-size: 14px;
+    }
 `;
