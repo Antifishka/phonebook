@@ -48,9 +48,15 @@ const ContactForm = () => {
             return alert(`${name} is already in contacts`);
             };
 
+            const contact = {
+                id: nanoid(),
+                name,
+                number,
+            };
+
             // Вызываем генератор экшена и передаем имя и номер контакта для поля payload
             // Отправляем результат - экшен создания контакта
-            dispatch(addContact(name, number));
+            dispatch(addContact(contact));
 
             resetForm();
         },
