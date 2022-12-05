@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getFilter } from "../../redux/selectors";
 import { setFilter } from "../../redux/filterSlice";
-import { WrapperFilter, FieldFilter, InputFilter } from "./Filter.styled";
+import { FieldFilter, InputFilter } from "./Filter.styled";
+import { Box } from "components/Box/Box";
+import { theme } from "theme";
 
 export const Filter = ({ onChange }) => {
     const filter = useSelector(getFilter);
@@ -12,7 +14,7 @@ export const Filter = ({ onChange }) => {
     };
 
     return (
-        <WrapperFilter>
+        <Box minWidth={theme.sizes.minWidth} mb={3} textAlign="left">
             <FieldFilter htmlFor="">Find contacts by name
                 <InputFilter
                     type="text"
@@ -21,6 +23,6 @@ export const Filter = ({ onChange }) => {
                     onChange={changeFilter}
                 />
             </FieldFilter>
-        </WrapperFilter>
+        </Box>
     );
 };   

@@ -1,18 +1,18 @@
 import styled from '@emotion/styled';
 
 export const Contacts = styled.ul`
-    min-width: 288px;
+    min-width: ${p => p.theme.sizes.minWidth};
 `;
 
 export const ContactItem = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     width: 100%;
-    font-size: 16px;
+    
+    font-size: ${p => p.theme.fontSizes.m};
 
     :not(:first-of-type){
-       border-top: 1px solid #2f2f37; 
+       border-top: ${p => p.theme.borders.normal}; 
     }
 `;

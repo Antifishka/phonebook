@@ -2,9 +2,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "redux/contactsSlice";
 import { getContacts } from "redux/selectors";
 import { nanoid } from 'nanoid';
-import { BoxForm, FieldForm, InputForm, BtnForm, Error } from './ContactForm.styled';
+import { Button } from "components/Button/Button";
+import { BoxForm, FieldForm, InputForm, Error } from './ContactForm.styled';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+
 
 // library yup
 const basicSchema = yup.object().shape({
@@ -89,7 +91,7 @@ const ContactForm = () => {
                     onBlur={handleBlur} />
                 {errors.number && touched.number &&<Error>{errors.number}</Error>}
             </FieldForm>    
-            <BtnForm type="submit">Add contact</BtnForm>        
+            <Button type="submit">Add contact</Button>        
         </BoxForm> 
     );
 };

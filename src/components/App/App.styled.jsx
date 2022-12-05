@@ -16,9 +16,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+  font-size: ${p => p.theme.fontSizes.m};;
 
-  color: #2f2f37;
+  color: ${p => p.theme.colors.mainText};
 }
 
 code {
@@ -43,17 +43,20 @@ li{
 }
 `;
 
-export const Container = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 16px;
-  text-align: center;
-`;
-
 export const TitlePhonebook = styled.h1`
-margin-bottom: 16px;
+margin-bottom: ${p => p.theme.space[4]}px;
+
+font-size: ${p => p.theme.fontSizes.xl};
+font-weight: ${p => p.theme.fontWeights.bold};
+
+color: ${p => p.theme.colors.accent};
 `;
 
 export const TitleContacts = styled.h2`
-margin-bottom: 16px;
+margin-bottom: ${p => p.theme.space[4]}px;
+
+font-size: ${p => p.theme.fontSizes.l};
+font-weight: ${p => p.theme.fontWeights.bold};
+
+color: ${p => p.theme.colors.accent};
 `;
