@@ -3,6 +3,7 @@ import { GlobalStyles, TitlePhonebook, TitleContacts } from "./App.styled";
 import ContactForm from "../ContactForm/ContactForm";
 import { ContactList } from "../ContactList/ContactList";
 import { Filter } from "../Filter/Filter";
+import SyncLoader from "react-spinners/SyncLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getError, getIsLoading } from "redux/selectors";
@@ -25,7 +26,7 @@ function Phonebook() {
       my={0}
       mx={"auto"}
       p={3}
-      textAlign={"center"}
+      textAlign="center"
       as="main">
       <Global styles={GlobalStyles} />
       <TitlePhonebook>Phonebook</TitlePhonebook>
@@ -33,7 +34,7 @@ function Phonebook() {
 
       <TitleContacts>Contacts</TitleContacts>
       <Filter />
-      {isLoading && !error && <b>Request in progress...</b>}
+      {isLoading && !error && <SyncLoader color={theme.colors.accent}/>}
       <ContactList />
     </Box>
   );

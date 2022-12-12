@@ -5,9 +5,9 @@ export const Contacts = styled.ul`
 `;
 
 export const ContactItem = styled.li`
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
     width: 100%;
     
     font-size: ${p => p.theme.fontSizes.m};
