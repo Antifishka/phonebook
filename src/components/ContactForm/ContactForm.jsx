@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "redux/contactsSlice";
+import { addContact } from "redux/operations";
 import { getContacts } from "redux/selectors";
 import { nanoid } from 'nanoid';
 import { Button } from "components/Button/Button";
@@ -7,8 +7,6 @@ import { BoxForm, FieldForm, InputForm, Error } from './ContactForm.styled';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-
-// library yup
 const basicSchema = yup.object().shape({
     name: yup
         .string()
@@ -18,7 +16,7 @@ const basicSchema = yup.object().shape({
             /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
             "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan")
         .required('Name is required'),
-    number: yup
+    phone: yup
         .string()
         .matches(
             /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
@@ -26,20 +24,18 @@ const basicSchema = yup.object().shape({
         .required('Number is required'),
 });
  
-// Library formik
 const ContactForm = () => {
     const contacts = useSelector(getContacts);
-    // Получаем ссылку на функцию отправки экшенов
     const dispatch = useDispatch();
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
             name: '',
-            number: '',
+            phone: '',
         },
         validationSchema: basicSchema,
-        onSubmit: ({ name, number }, { resetForm }) => {
-            console.log(name, number);
+        onSubmit: ({ name, phone }, { resetForm }) => {
+            console.log(name, phone);
 
             const normalizedName = name.toLowerCase();
 
@@ -51,13 +47,10 @@ const ContactForm = () => {
             };
 
             const contact = {
-                id: nanoid(),
                 name,
-                number,
+                phone,
             };
 
-            // Вызываем генератор экшена и передаем имя и номер контакта для поля payload
-            // Отправляем результат - экшен создания контакта
             dispatch(addContact(contact));
 
             resetForm();
@@ -65,7 +58,7 @@ const ContactForm = () => {
     });
 
     const nameId = nanoid();
-    const numberId = nanoid();
+    const phoneId = nanoid();
 
     return (
         <BoxForm onSubmit={handleSubmit}>
@@ -80,16 +73,16 @@ const ContactForm = () => {
                     onBlur={handleBlur} /> 
                 {errors.name && touched.name && <Error>{errors.name}</Error>}
             </FieldForm>
-            <FieldForm htmlFor={numberId}>Number
+            <FieldForm htmlFor={phoneId}>Phone number
                 <InputForm
                     type="tel"
-                    name="number"
-                    id={numberId}
-                    value={values.number}
+                    name="phone"
+                    id={phoneId}
+                    value={values.phone}
                     placeholder="+38-(012)-345-67-89"
                     onChange={handleChange}
                     onBlur={handleBlur} />
-                {errors.number && touched.number &&<Error>{errors.number}</Error>}
+                {errors.phone && touched.phone &&<Error>{errors.phone}</Error>}
             </FieldForm>    
             <Button type="submit">Add contact</Button>        
         </BoxForm> 
