@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "redux/operations";
-import { getContacts, getIsFormLoading } from "redux/selectors";
+import { selectContacts, selectIsFormLoading } from "redux/selectors";
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 import { Button } from "components/Button/Button";
@@ -26,8 +26,8 @@ const basicSchema = yup.object().shape({
 });
  
 const ContactForm = () => {
-    const contacts = useSelector(getContacts);
-    const isFormLoading = useSelector(getIsFormLoading);
+    const contacts = useSelector(selectContacts);
+    const isFormLoading = useSelector(selectIsFormLoading);
     const dispatch = useDispatch();
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({

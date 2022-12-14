@@ -46,6 +46,7 @@ li{
 export const TitlePhonebook = styled.h1`
 margin-bottom: ${p => p.theme.space[4]}px;
 
+font-family: ${p => p.theme.fonts.heading};
 font-size: ${p => p.theme.fontSizes.xl};
 font-weight: ${p => p.theme.fontWeights.bold};
 
@@ -55,6 +56,7 @@ color: ${p => p.theme.colors.accent};
 export const TitleContacts = styled.h2`
 margin-bottom: ${p => p.theme.space[4]}px;
 
+font-family: ${p => p.theme.fonts.heading};
 font-size: ${p => p.theme.fontSizes.l};
 font-weight: ${p => p.theme.fontWeights.bold};
 

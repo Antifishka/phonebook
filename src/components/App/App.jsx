@@ -7,15 +7,15 @@ import SyncLoader from "react-spinners/SyncLoader";
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getError, getIsLoading } from "redux/selectors";
+import { selectError, selectIsLoading } from "redux/selectors";
 import { fetchContacts } from "redux/operations";
 import { Box } from '../Box/Box';
 import { theme } from 'theme';
 
 function Phonebook() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
