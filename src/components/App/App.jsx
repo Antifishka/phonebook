@@ -4,6 +4,7 @@ import ContactForm from "../ContactForm/ContactForm";
 import { ContactList } from "../ContactList/ContactList";
 import { Filter } from "../Filter/Filter";
 import SyncLoader from "react-spinners/SyncLoader";
+import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getError, getIsLoading } from "redux/selectors";
@@ -18,7 +19,10 @@ function Phonebook() {
 
   useEffect(() => {
     dispatch(fetchContacts());
-  }, [dispatch]);
+    error && toast.error('No response from server!');
+  }, [dispatch, error]);
+
+  const showContacs = isLoading && !error;
 
   return (
     <Box
@@ -34,8 +38,8 @@ function Phonebook() {
 
       <TitleContacts>Contacts</TitleContacts>
       <Filter />
-      {isLoading && !error && <SyncLoader color={theme.colors.accent}/>}
-      <ContactList />
+      {showContacs ? <SyncLoader color={theme.colors.accent} /> : <ContactList />}
+      <Toaster position="top-right"/>
     </Box>
   );
 };

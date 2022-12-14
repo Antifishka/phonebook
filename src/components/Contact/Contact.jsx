@@ -2,10 +2,10 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/operations";
 import { Button } from "components/Button/Button";
 import { ContactText, ContactPhone } from "./Contact.styled";
-import { AiOutlineUserAdd } from 'react-icons/ai';
+import { AiOutlineUserAdd, AiOutlineDelete } from 'react-icons/ai';
+import { BsTelephonePlus } from 'react-icons/bs';
 import { Box } from '../Box/Box';
 import PropTypes from 'prop-types';
-import { theme } from "theme";
 
 export const Contact = ({ id, name, phone } ) => {
   const dispatch = useDispatch();
@@ -16,13 +16,18 @@ export const Contact = ({ id, name, phone } ) => {
     <Box display="flex" alignItems="center" justifyContent="space-between">
       <Box display="flex" alignItems="center" justifyContent="space-between" width="70%">
         <ContactText>
-        <AiOutlineUserAdd size={18} color={"#1976d2"} />
-        {name}
+          <AiOutlineUserAdd size={18} color={"#1976d2"} />
+          {name}
         </ContactText>
-        <ContactPhone>{phone}</ContactPhone>
+        <ContactPhone>
+          <BsTelephonePlus size={18} color={"#1976d2"} />
+          {phone}
+        </ContactPhone>
       </Box>
       
-      <Button type = "button" onClick={handleDelete}>Delete</Button>
+      <Button type="button" onClick={handleDelete}>
+        <AiOutlineDelete size={18} />
+      </Button>
     </Box>
   );
 };

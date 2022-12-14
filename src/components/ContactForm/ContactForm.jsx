@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "redux/operations";
-import { getContacts } from "redux/selectors";
+import { getContacts, getIsFormLoading } from "redux/selectors";
+import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 import { Button } from "components/Button/Button";
 import { BoxForm, FieldForm, InputForm, Error } from './ContactForm.styled';
@@ -26,6 +27,7 @@ const basicSchema = yup.object().shape({
  
 const ContactForm = () => {
     const contacts = useSelector(getContacts);
+    const isFormLoading = useSelector(getIsFormLoading);
     const dispatch = useDispatch();
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
@@ -43,7 +45,7 @@ const ContactForm = () => {
                 contact.name.toLowerCase() === normalizedName);
 
             if (checkByName) {
-            return alert(`${name} is already in contacts`);
+                return toast(`${name} is already in contacts.`, { icon: 'ℹ️'});
             };
 
             const contact = {
@@ -52,6 +54,7 @@ const ContactForm = () => {
             };
 
             dispatch(addContact(contact));
+            toast.success('Contact added!');
 
             resetForm();
         },
@@ -84,7 +87,8 @@ const ContactForm = () => {
                     onBlur={handleBlur} />
                 {errors.phone && touched.phone &&<Error>{errors.phone}</Error>}
             </FieldForm>    
-            <Button type="submit">Add contact</Button>        
+            <Button type="submit">{isFormLoading ? 'Adding...' : 'Add contact'}
+            </Button>        
         </BoxForm> 
     );
 };

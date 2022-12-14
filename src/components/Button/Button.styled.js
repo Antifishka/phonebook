@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
 
 export const ButtonStyled = styled.button`
-    padding-top: ${p => p.theme.space[3]}px;
-    padding-bottom: ${p => p.theme.space[3]}px;
-    padding-left: ${p => p.theme.space[4]}px;
-    padding-right: ${p => p.theme.space[4]}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: ${p => p.theme.space[2]}px;
+    padding-bottom: ${p => p.theme.space[2]}px;
+    padding-left: ${p => p.theme.space[3]}px;
+    padding-right: ${p => p.theme.space[3]}px;
     border-radius: ${p => p.theme.radii.normal};
     border: ${p => p.theme.borders.button};
     box-shadow: ${p => p.theme.shadows.boxShadow};

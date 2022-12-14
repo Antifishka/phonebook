@@ -14,7 +14,7 @@ export const Filter = ({ onChange }) => {
     };
 
     return (
-        <Box minWidth={theme.sizes.minWidth} mb={3} textAlign="left">
+        <Box minWidth={theme.sizes.minWidth} mb={4} textAlign="left">
             <FieldFilter htmlFor="">Find contacts by name
                 <InputFilter
                     type="text"
