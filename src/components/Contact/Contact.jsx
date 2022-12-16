@@ -20,7 +20,7 @@ export const Contact = ({ id, name, phone } ) => {
           {name}
         </ContactText>
         <ContactPhone>
-          <BsTelephonePlus size={18} color={"#1976d2"} />
+          <BsTelephonePlus size={17} color={"#1976d2"} />
           {phone}
         </ContactPhone>
       </Box>

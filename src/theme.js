@@ -1,3 +1,9 @@
+import facepaint from 'facepaint'
+
+const breakpoints = [320, 768, 1200];
+
+export const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
+
 export const theme = {
     colors: {
         mainText: '#2f2f37',

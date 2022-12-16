@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { ButtonStyled } from 'components/Button/Button.styled';
 import { theme } from 'theme';
 
 export const BoxForm = styled.form`
@@ -36,6 +37,14 @@ export const InputForm = styled.input`
     ::placeholder {
         font-size: ${p => theme.fontSizes.s};
     }
+`;
+
+export const ButtonForm = styled(ButtonStyled)`
+    padding-top: ${p => p.theme.space[3]}px;
+    padding-bottom: ${p => p.theme.space[3]}px;
+    padding-left: ${p => p.theme.space[4]}px;
+    padding-right: ${p => p.theme.space[4]}px;
+    min-width: 124px;
 `;
 
 export const Error = styled.p`

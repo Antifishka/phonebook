@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.1",
     "emotion-normalize": "^11.0.1",
+    "facepaint": "^1.2.1",
     "formik": "^2.2.9",
     "nanoid": "^4.0.0",
     "normalize.css": "^8.0.1",

@@ -1,6 +1,15 @@
 import { css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize'; 
 import styled from '@emotion/styled';
+// import { mq } from 'theme';
+
+import facepaint from 'facepaint'
+
+const mq = facepaint([
+  '@media(min-width: 320px)',
+  '@media(min-width: 768px)',
+  '@media(min-width: 1200px)'
+])
 
 export const GlobalStyles = css`
 ${emotionNormalize}
@@ -47,8 +56,11 @@ export const TitlePhonebook = styled.h1`
 margin-bottom: ${p => p.theme.space[4]}px;
 
 font-family: ${p => p.theme.fonts.heading};
-font-size: ${p => p.theme.fontSizes.xl};
 font-weight: ${p => p.theme.fontWeights.bold};
+
+${mq({
+    fontSizes: [ 32, 32, 32, 64],
+  })};
 
 color: ${p => p.theme.colors.accent};
 `;

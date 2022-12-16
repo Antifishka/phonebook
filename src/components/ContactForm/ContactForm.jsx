@@ -3,8 +3,8 @@ import { addContact } from "redux/operations";
 import { selectContacts, selectIsFormLoading } from "redux/selectors";
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
-import { Button } from "components/Button/Button";
-import { BoxForm, FieldForm, InputForm, Error } from './ContactForm.styled';
+// import { Button } from "components/Button/Button";
+import { BoxForm, FieldForm, InputForm, ButtonForm, Error } from './ContactForm.styled';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -87,8 +87,8 @@ const ContactForm = () => {
                     onBlur={handleBlur} />
                 {errors.phone && touched.phone &&<Error>{errors.phone}</Error>}
             </FieldForm>    
-            <Button type="submit">{isFormLoading ? 'Adding...' : 'Add contact'}
-            </Button>        
+            <ButtonForm type="submit">{isFormLoading ? 'Adding...' : 'Add contact'}
+            </ButtonForm>        
         </BoxForm> 
     );
 };
