@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "redux/operations";
-import { selectContacts, selectIsFormLoading } from "redux/selectors";
+import { addContact } from "redux/contacts/contacts-operations";
+import { selectContacts, selectIsFormLoading } from "redux/contacts/contacts-selectors";
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
-// import { Button } from "components/Button/Button";
-import { BoxForm, FieldForm, InputForm, ButtonForm, Error } from './ContactForm.styled';
+import { BoxForm, FieldForm, InputForm, ButtonForm, Error } from './ContactEditor.styled';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -25,7 +24,7 @@ const basicSchema = yup.object().shape({
         .required('Number is required'),
 });
  
-const ContactForm = () => {
+const ContactEditor = () => {
     const contacts = useSelector(selectContacts);
     const isFormLoading = useSelector(selectIsFormLoading);
     const dispatch = useDispatch();
@@ -93,5 +92,5 @@ const ContactForm = () => {
     );
 };
     
-export default ContactForm;
+export default ContactEditor;
 

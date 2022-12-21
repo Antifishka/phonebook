@@ -1,47 +1,49 @@
 import { Global } from '@emotion/react' 
-import { GlobalStyles, TitlePhonebook, TitleContacts } from "./App.styled";
-import ContactForm from "../ContactForm/ContactForm";
-import { ContactList } from "../ContactList/ContactList";
-import { Filter } from "../Filter/Filter";
-import SyncLoader from "react-spinners/SyncLoader";
-import toast, { Toaster } from 'react-hot-toast';
+import { GlobalStyles } from "./App.styled";
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from '../Layout/Layout';
+import { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { selectError, selectIsLoading } from "redux/selectors";
-import { fetchContacts } from "redux/operations";
-import { Box } from '../Box/Box';
-import { theme } from 'theme';
+import { useEffect, lazy } from "react";
 
-function Phonebook() {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+const HomePage = lazy(() => import('../../pages/Home'));
+const RegisterPage = lazy(() => import('../../pages/Register'));
+const LoginPage = lazy(() => import('../../pages/Login'));
+const ContactsPage = lazy(() => import('../../pages/Contacts'));
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-    error && toast.error('No response from server!');
-  }, [dispatch, error]);
-
-  const showContacs = isLoading && !error;
-
+function App() {
+  
   return (
-    <Box
-      maxWidth={theme.sizes.maxWidth}
-      my={0}
-      mx={"auto"}
-      p={3}
-      textAlign="center"
-      as="main">
-      <Global styles={GlobalStyles} />
-      <TitlePhonebook>Phonebook</TitlePhonebook>
-      <ContactForm />
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} /> 
+          <Route path="/contact" element={<ContactsPage />} />
+        </Route>
+      </Routes>
 
-      <TitleContacts>Contacts</TitleContacts>
-      <Filter />
-      {showContacs ? <SyncLoader color={theme.colors.accent} /> : <ContactList />}
+      <Global styles={GlobalStyles} />
       <Toaster position="top-right"/>
-    </Box>
+    </>
+      
   );
 };
 
-export default Phonebook;
+export default App;
+
+// {/* <Box
+//        maxWidth={theme.sizes.maxWidth}
+//        my={0}
+//        mx={"auto"}
+//        p={3}
+//        textAlign="center"
+//        as="main">
+//        <TitlePhonebook>Phonebook</TitlePhonebook>
+//        <ContactForm />
+
+//        <TitleContacts>Contacts</TitleContacts>
+//        <Filter />
+//        {showContacs ? <SyncLoader color={theme.colors.accent} /> : <ContactList />}
+//      </Box> */}

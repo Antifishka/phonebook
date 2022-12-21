@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteContact } from "redux/operations";
+import { deleteContact } from "redux/contacts/contacts-operations";
 import { Button } from "components/Button/Button";
 import { ContactText, ContactPhone } from "./Contact.styled";
 import { AiOutlineUserAdd, AiOutlineDelete } from 'react-icons/ai';
