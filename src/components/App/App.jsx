@@ -3,8 +3,9 @@ import { GlobalStyles } from "./App.styled";
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../Layout/Layout';
 import { Toaster } from 'react-hot-toast';
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, lazy } from "react";
+import { useEffect, lazy } from 'react';
+import { useDispatch } from "react-redux";
+import authOperations from '../../redux/auth/auth-operations';
 
 const HomePage = lazy(() => import('../../pages/Home'));
 const RegisterPage = lazy(() => import('../../pages/Register'));
@@ -12,6 +13,11 @@ const LoginPage = lazy(() => import('../../pages/Login'));
 const ContactsPage = lazy(() => import('../../pages/Contacts'));
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.refreshUser());
+  }, [dispatch]);
   
   return (
     <>
@@ -20,7 +26,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} /> 
-          <Route path="/contact" element={<ContactsPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
         </Route>
       </Routes>
 

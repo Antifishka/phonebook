@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/operations';
+import authOperations from '../../redux/auth/auth-operations';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ export const RegisterForm = () => {
     e.preventDefault();
     const form = e.currentTarget;
     dispatch(
-      register({
+      authOperations.register({
         name: form.elements.name.value,
         email: form.elements.email.value,
         password: form.elements.password.value,
