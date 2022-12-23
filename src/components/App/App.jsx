@@ -2,7 +2,6 @@ import { Global } from '@emotion/react'
 import { GlobalStyles } from "./App.styled";
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../Layout/Layout';
-import { Toaster } from 'react-hot-toast';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from "react-redux";
 import authOperations from '../../redux/auth/auth-operations';
@@ -12,7 +11,7 @@ const RegisterPage = lazy(() => import('../../pages/Register'));
 const LoginPage = lazy(() => import('../../pages/Login'));
 const ContactsPage = lazy(() => import('../../pages/Contacts'));
 
-function App() {
+export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,13 +30,10 @@ function App() {
       </Routes>
 
       <Global styles={GlobalStyles} />
-      <Toaster position="top-right"/>
     </>
       
   );
 };
-
-export default App;
 
 // {/* <Box
 //        maxWidth={theme.sizes.maxWidth}
