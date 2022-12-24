@@ -1,6 +1,6 @@
 import facepaint from 'facepaint'
 
-const breakpoints = [320, 768, 1200];
+const breakpoints = ['320px', '768px', '1200px'];
 
 export const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
@@ -27,6 +27,7 @@ export const theme = {
     },
     fontWeights: {
         normal: 400,
+        medium: 500,
         bold: 700,
     },
     lineHeights: {

@@ -24,13 +24,13 @@ export default function Contacts() {
   const showContacs = isLoading && !error;
 
   return (
-    <>
+    <main>
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
       <ContactEditor />
       <Filter />
       {showContacs ? <SyncLoader color={theme.colors.accent} /> : <ContactList />}
-    </>
+    </main>
   );
 }

@@ -4,6 +4,7 @@ export const ButtonStyled = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: ${p => p.theme.space[2]}px;
     padding-top: ${p => p.theme.space[2]}px;
     padding-bottom: ${p => p.theme.space[2]}px;
     padding-left: ${p => p.theme.space[3]}px;

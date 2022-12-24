@@ -19,6 +19,12 @@ const contactsSlice = createSlice({
         isFormLoading: false,
         isLoading: false,
         error: null,
+        filter: '',
+    },
+    reducers: {
+        setFilter(state, action) {
+            return action.payload;
+        },
     },
     extraReducers: {
         [fetchContacts.pending]: handlePending,
@@ -52,5 +58,6 @@ const contactsSlice = createSlice({
     },
 });
 
+export const { setFilter } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
 

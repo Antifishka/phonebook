@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectFilter } from "../../redux/contacts/contacts-selectors";
-import { setFilter } from "../../redux/contacts/filter-slice";
+import { selectFilter } from "redux/contacts/contacts-selectors";
+import { setFilter } from "../../redux/contacts/contacts-slice";
 import { FieldFilter, InputFilter } from "./Filter.styled";
 import { Box } from "components/Box/Box";
 import { theme } from "theme";

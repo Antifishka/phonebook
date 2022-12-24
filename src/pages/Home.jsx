@@ -1,26 +1,20 @@
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import { Box } from "components/Box/Box";
 
 export default function Home() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>
-        Contacts manager welcome page{' '}
+    <Box minHeight= 'calc(100vh - 50px)'
+      display= 'flex'
+      alignItems= 'center'
+      justifyContent= 'center'>
+      <Box fontWeight= '700'
+        fontSize={[5,6,7]}
+        textAlign='center'
+        as="h1">
+        "Wellcome to Phonebook"{' '}
         <span role="img" aria-label="Greeting icon">
           💁‍♀️
         </span>
-      </h1>
-    </div>
+      </Box>
+    </Box>
   );
 }
