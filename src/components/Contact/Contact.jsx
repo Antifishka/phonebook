@@ -2,7 +2,8 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/contacts/contacts-operations";
 import { Button } from "components/Button/Button";
 import { ContactText, ContactPhone } from "./Contact.styled";
-import { AiOutlineUserAdd, AiOutlineDelete } from 'react-icons/ai';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { AiOutlineDelete } from 'react-icons/ai';
 import { BsTelephonePlus } from 'react-icons/bs';
 import { Box } from '../Box/Box';
 import PropTypes from 'prop-types';
@@ -16,7 +17,7 @@ export const Contact = ({ id, name, phone } ) => {
     <Box display="flex" alignItems="center" justifyContent="space-between">
       <Box display="flex" alignItems="center" justifyContent="space-between" width="70%">
         <ContactText>
-          <AiOutlineUserAdd size={18} color={"#1976d2"} />
+          <BsFillPersonFill/>
           {name}
         </ContactText>
         <ContactPhone>

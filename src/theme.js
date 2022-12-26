@@ -7,8 +7,8 @@ export const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`)
 export const theme = {
     colors: {
         mainText: '#2f2f37',
-        secondaryText: '#fff',
         background: '#e2e5e8',
+        white: '#fff',
         accent: '#1976d2',
         error: 'red',
     },
@@ -36,7 +36,7 @@ export const theme = {
     },
     sizes: {
         minWidth: '288px',
-        maxWidth: '800px',
+        maxWidth: '400px',
     },
     borders: {
         none: 'none',

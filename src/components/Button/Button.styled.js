@@ -24,6 +24,6 @@ export const ButtonStyled = styled.button`
     :active{
         background-color: ${p => p.theme.colors.accent};
         border-color: ${p => p.theme.colors.accent};
-        color: ${p => p.theme.colors.secondaryText};
-    }
+        color: ${p => p.theme.colors.white};
+    }    
 `

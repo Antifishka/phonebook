@@ -27,6 +27,17 @@ const authSlice = createSlice({
             state.token = null;
             state.isLoggedIn = false;
         },
+        [authOperations.refreshUser.pending](state) {
+            state.isRefreshing = true;
+            },
+        [authOperations.refreshUser.fulfilled](state, action) {
+            state.user = action.payload;
+            state.isLoggedIn = true;
+            state.isRefreshing = false;
+        },
+        [authOperations.refreshUser.rejected](state) {
+            state.isRefreshing = false;
+        },
     }
 })
 

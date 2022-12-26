@@ -28,6 +28,7 @@ body {
   font-size: ${p => p.theme.fontSizes.m};;
 
   color: ${p => p.theme.colors.mainText};
+  background-color: #f4f4f4;
 }
 
 code {

@@ -17,7 +17,7 @@ export const UserMenu = () => {
       alignItems="center"
       fontWeight={theme.fontWeights.bold}>
       <FaUserLock color={"#1976d2"}/>
-      <p>Welcome, {user.name}</p>
+      <p>{user.name}</p>
       <Button type="button" onClick={() => dispatch(logOut())}>
         Logout
         <MdLogout />

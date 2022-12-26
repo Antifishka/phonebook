@@ -10,6 +10,7 @@ export const BoxForm = styled.form`
     gap: ${p => p.theme.space[4]}px;
 
     min-width: ${p => p.theme.sizes.minWidth};
+    max-width: ${p => p.theme.sizes.maxWidth};
     border: ${p => p.theme.borders.button};
     border-radius: ${p => p.theme.radii.normal};
     box-shadow: ${p => p.theme.shadows.boxShadow};
@@ -18,6 +19,10 @@ export const BoxForm = styled.form`
     padding-left: ${p => p.theme.space[4]}px;
     padding-right: ${p => p.theme.space[4]}px;
     margin-bottom: ${p => p.theme.space[4]}px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: #fff;
 `;
 
 export const FieldForm = styled.label`
@@ -40,11 +45,14 @@ export const InputForm = styled.input`
 `;
 
 export const ButtonForm = styled(ButtonStyled)`
-    padding-top: ${p => p.theme.space[3]}px;
+    display: flex;
+    align-items: center;;
+    gap: ${p => p.theme.space[2]}px;
+    /* padding-top: ${p => p.theme.space[3]}px;
     padding-bottom: ${p => p.theme.space[3]}px;
     padding-left: ${p => p.theme.space[4]}px;
     padding-right: ${p => p.theme.space[4]}px;
-    min-width: 124px;
+    min-width: 124px; */
 `;
 
 export const Error = styled.p`

@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "redux/contacts/contacts-operations";
 import { selectContacts, selectIsFormLoading } from "redux/contacts/contacts-selectors";
+import { BsFillPersonPlusFill } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 import { BoxForm, FieldForm, InputForm, ButtonForm, Error } from './ContactEditor.styled';
@@ -87,6 +88,7 @@ const ContactEditor = () => {
                 {errors.phone && touched.phone &&<Error>{errors.phone}</Error>}
             </FieldForm>    
             <ButtonForm type="submit">{isFormLoading ? 'Adding...' : 'Add contact'}
+                <BsFillPersonPlusFill />
             </ButtonForm>        
         </BoxForm> 
     );

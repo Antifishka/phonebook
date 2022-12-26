@@ -18,8 +18,9 @@ export const StyledLink = styled(NavLink)`
     transition: ${p => p.theme.transition.main};
     
     &.active {
-        color: ${p => p.theme.colors.secondaryText};
+        color: ${p => p.theme.colors.white};
         background-color: ${p => p.theme.colors.accent};
+        box-shadow: ${p=>p.theme.shadows.boxShadow};
     }
 
     :hover:not(.active),

@@ -4,12 +4,11 @@ import { Helmet } from 'react-helmet';
 import ContactEditor from 'components/ContactEditor/ContactEditor';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from "components/Filter/Filter";
-import SyncLoader from "react-spinners/SyncLoader";
+import { Loader } from "components/Loader/Loader";
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { selectIsLoading, selectError } from 'redux/contacts/contacts-selectors';
 import toast from 'react-hot-toast';
-// import { Box } from '../Box/Box';
-import { theme } from 'theme';
+import { Box } from '../components/Box/Box';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -24,13 +23,13 @@ export default function Contacts() {
   const showContacs = isLoading && !error;
 
   return (
-    <main>
+    <Box p="16px 0" as="main">
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
       <ContactEditor />
       <Filter />
-      {showContacs ? <SyncLoader color={theme.colors.accent} /> : <ContactList />}
-    </main>
+      {showContacs ? <Loader /> : <ContactList />}
+    </Box>
   );
 }

@@ -1,9 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectFilter } from "redux/contacts/contacts-selectors";
-import { setFilter } from "../../redux/contacts/contacts-slice";
+import { selectFilter } from "redux/filter/filter-selectors";
+import { setFilter } from "redux/contacts/contacts-slice";
 import { FieldFilter, InputFilter } from "./Filter.styled";
 import { Box } from "components/Box/Box";
 import { theme } from "theme";
+import { Button } from "components/Button/Button";
+import { BsFillPersonPlusFill } from 'react-icons/bs';
 
 export const Filter = ({ onChange }) => {
     const filter = useSelector(selectFilter);
@@ -14,8 +16,16 @@ export const Filter = ({ onChange }) => {
     };
 
     return (
-        <Box minWidth={theme.sizes.minWidth} mb={4} textAlign="left">
-            <FieldFilter htmlFor="">Find contacts by name
+        <Box minWidth={theme.sizes.minWidth}
+            mb={4}
+            textAlign="left"
+            maxWidth={theme.sizes.maxWidth}
+            display="flex"
+            alignItems="center"
+            justifyContaent="center"
+            gridGap={[2, 2, 3]}
+            mx="auto">
+            <FieldFilter htmlFor="">
                 <InputFilter
                     type="text"
                     value={filter}
@@ -23,6 +33,9 @@ export const Filter = ({ onChange }) => {
                     onChange={changeFilter}
                 />
             </FieldFilter>
+            <Button>
+                <BsFillPersonPlusFill />
+            </Button>
         </Box>
     );
 };   
