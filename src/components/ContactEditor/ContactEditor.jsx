@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "redux/contacts/contacts-operations";
 import { selectContacts, selectIsFormLoading } from "redux/contacts/contacts-selectors";
-import { BsFillPersonPlusFill } from 'react-icons/bs';
+import { BsPersonPlus } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 import { BoxForm, FieldForm, InputForm, ButtonForm, Error } from './ContactEditor.styled';
@@ -17,7 +17,7 @@ const basicSchema = yup.object().shape({
             /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
             "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan")
         .required('Name is required'),
-    phone: yup
+    number: yup
         .string()
         .matches(
             /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
@@ -33,11 +33,11 @@ const ContactEditor = () => {
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
             name: '',
-            phone: '',
+            number: '',
         },
         validationSchema: basicSchema,
-        onSubmit: ({ name, phone }, { resetForm }) => {
-            console.log(name, phone);
+        onSubmit: ({ name, number }, { resetForm }) => {
+            console.log(name, number);
 
             const normalizedName = name.toLowerCase();
 
@@ -50,7 +50,7 @@ const ContactEditor = () => {
 
             const contact = {
                 name,
-                phone,
+                number,
             };
 
             dispatch(addContact(contact));
@@ -61,7 +61,7 @@ const ContactEditor = () => {
     });
 
     const nameId = nanoid();
-    const phoneId = nanoid();
+    const numberId = nanoid();
 
     return (
         <BoxForm onSubmit={handleSubmit}>
@@ -76,19 +76,19 @@ const ContactEditor = () => {
                     onBlur={handleBlur} /> 
                 {errors.name && touched.name && <Error>{errors.name}</Error>}
             </FieldForm>
-            <FieldForm htmlFor={phoneId}>Phone number
+            <FieldForm htmlFor={numberId}>Phone number
                 <InputForm
                     type="tel"
-                    name="phone"
-                    id={phoneId}
-                    value={values.phone}
+                    name="number"
+                    id={numberId}
+                    value={values.number}
                     placeholder="+38-(012)-345-67-89"
                     onChange={handleChange}
                     onBlur={handleBlur} />
-                {errors.phone && touched.phone &&<Error>{errors.phone}</Error>}
+                {errors.number && touched.number &&<Error>{errors.number}</Error>}
             </FieldForm>    
             <ButtonForm type="submit">{isFormLoading ? 'Adding...' : 'Add contact'}
-                <BsFillPersonPlusFill />
+                <BsPersonPlus size={18}/>
             </ButtonForm>        
         </BoxForm> 
     );

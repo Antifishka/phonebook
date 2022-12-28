@@ -11,7 +11,7 @@ export const ButtonStyled = styled.button`
     padding-right: ${p => p.theme.space[3]}px;
     border-radius: ${p => p.theme.radii.normal};
     border: ${p => p.theme.borders.button};
-    box-shadow: ${p => p.theme.shadows.boxShadow};
+    box-shadow: ${p => p.theme.shadows.button};
     outline: none;
     cursor: pointer;
     

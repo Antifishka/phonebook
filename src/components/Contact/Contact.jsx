@@ -8,7 +8,7 @@ import { BsTelephonePlus } from 'react-icons/bs';
 import { Box } from '../Box/Box';
 import PropTypes from 'prop-types';
 
-export const Contact = ({ id, name, phone } ) => {
+export const Contact = ({ id, name, number } ) => {
   const dispatch = useDispatch();
   
   const handleDelete = () => dispatch(deleteContact(id));
@@ -17,12 +17,12 @@ export const Contact = ({ id, name, phone } ) => {
     <Box display="flex" alignItems="center" justifyContent="space-between">
       <Box display="flex" alignItems="center" justifyContent="space-between" width="70%">
         <ContactText>
-          <BsFillPersonFill/>
+          <BsFillPersonFill />
           {name}
         </ContactText>
         <ContactPhone>
           <BsTelephonePlus size={17} color={"#1976d2"} />
-          {phone}
+          {number}
         </ContactPhone>
       </Box>
       
@@ -36,5 +36,5 @@ export const Contact = ({ id, name, phone } ) => {
 Contact.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };

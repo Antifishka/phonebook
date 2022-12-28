@@ -20,7 +20,7 @@ export const StyledLink = styled(NavLink)`
     &.active {
         color: ${p => p.theme.colors.white};
         background-color: ${p => p.theme.colors.accent};
-        box-shadow: ${p=>p.theme.shadows.boxShadow};
+        box-shadow: ${p=>p.theme.shadows.button};
     }
 
     :hover:not(.active),

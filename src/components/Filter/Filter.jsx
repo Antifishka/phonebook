@@ -5,7 +5,7 @@ import { FieldFilter, InputFilter } from "./Filter.styled";
 import { Box } from "components/Box/Box";
 import { theme } from "theme";
 import { Button } from "components/Button/Button";
-import { BsFillPersonPlusFill } from 'react-icons/bs';
+import { BsPersonPlus } from 'react-icons/bs';
 
 export const Filter = ({ onChange }) => {
     const filter = useSelector(selectFilter);
@@ -17,14 +17,18 @@ export const Filter = ({ onChange }) => {
 
     return (
         <Box minWidth={theme.sizes.minWidth}
-            mb={4}
+            mb={3}
+            mx="auto"
+            p={3}
             textAlign="left"
-            maxWidth={theme.sizes.maxWidth}
+            maxWidth={theme.sizes.mediumWidth}
             display="flex"
             alignItems="center"
             justifyContaent="center"
             gridGap={[2, 2, 3]}
-            mx="auto">
+            borderRadius={theme.radii.box}
+            boxShadow={theme.shadows.box}
+        backgroundColor={theme.colors.white}>
             <FieldFilter htmlFor="">
                 <InputFilter
                     type="text"
@@ -34,7 +38,7 @@ export const Filter = ({ onChange }) => {
                 />
             </FieldFilter>
             <Button>
-                <BsFillPersonPlusFill />
+                <BsPersonPlus size={24}/>
             </Button>
         </Box>
     );
