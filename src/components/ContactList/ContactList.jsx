@@ -7,13 +7,17 @@ export const ContactList = () => {
     const visibleContacts = useSelector(selectVisibleContacts);
 
     return (
-        <Contacts>
-            {visibleContacts.map(({ id, name, number }) =>
-                <ContactItem key={id}>
-                    <Contact id={id} name={name} number={number}/>
-                </ContactItem>
-            )}
-        </Contacts>
+        <>
+            {visibleContacts.length > 0
+                ? (<Contacts> 
+                    {visibleContacts.map(({ id, name, number }) =>
+                        <ContactItem key={id}>
+                            <Contact id={id} name={name} number={number}/>
+                        </ContactItem>)}
+                </Contacts>)
+                : (<Contacts>There are no contacts</Contacts>)
+            }
+        </>
     );
 }; 
 

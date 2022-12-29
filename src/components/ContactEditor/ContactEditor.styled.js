@@ -41,11 +41,6 @@ export const InputForm = styled.input`
     ::placeholder {
         font-size: ${p => theme.fontSizes.s};
     }
-
-    :focus{
-        border-color: ${p => p.theme.colors.accent};
-        outline: 1px solid #1976d2;
-    }
 `;
 
 export const IconForm = styled.div`

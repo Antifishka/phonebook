@@ -12,6 +12,8 @@ export const Contacts = styled.ul`
     padding-bottom: ${p => p.theme.space[3]}px;
     border-radius: ${p => p.theme.radii.box};
     box-shadow: ${p => p.theme.shadows.box};
+
+    text-align: center;
 `;
 
 export const ContactItem = styled.li`
