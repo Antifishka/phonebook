@@ -1,12 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "redux/contacts/contacts-operations";
 import { selectContacts, selectIsFormLoading } from "redux/contacts/contacts-selectors";
+import { FaUserEdit, FaPhoneAlt } from 'react-icons/fa';
 import { BsPersonPlus } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
-import { BoxForm, FieldForm, InputForm, ButtonForm, Error } from './ContactEditor.styled';
+import { BoxForm, FieldForm, InputForm, IconForm, ButtonForm, Error } from './ContactEditor.styled';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import PropTypes from 'prop-types';
+import { theme } from 'theme';
+import { Box } from "components/Box/Box";
 
 const basicSchema = yup.object().shape({
     name: yup
@@ -25,7 +29,7 @@ const basicSchema = yup.object().shape({
         .required('Number is required'),
 });
  
-const ContactEditor = () => {
+const ContactEditor = ({onAdd}) => {
     const contacts = useSelector(selectContacts);
     const isFormLoading = useSelector(selectIsFormLoading);
     const dispatch = useDispatch();
@@ -56,6 +60,8 @@ const ContactEditor = () => {
             dispatch(addContact(contact));
             toast.success('Contact added!');
 
+            onAdd();
+
             resetForm();
         },
     });
@@ -65,18 +71,23 @@ const ContactEditor = () => {
 
     return (
         <BoxForm onSubmit={handleSubmit}>
+            <Box fontSize={theme.fontSizes.l}
+                fontWeight={theme.fontWeights.bold}
+                as="strong">Create new contact</Box>
             <FieldForm htmlFor={nameId}>Name
+                <IconForm><FaUserEdit size={15} /></IconForm>
                 <InputForm
                     type="text"
                     name="name"
                     id={nameId}
                     value={values.name}
-                    placeholder="Ivan Petrov"
+                    placeholder="Alexander Repeta"
                     onChange={handleChange}
                     onBlur={handleBlur} /> 
                 {errors.name && touched.name && <Error>{errors.name}</Error>}
             </FieldForm>
             <FieldForm htmlFor={numberId}>Phone number
+                <IconForm><FaPhoneAlt size={15} /></IconForm>
                 <InputForm
                     type="tel"
                     name="number"
@@ -88,11 +99,15 @@ const ContactEditor = () => {
                 {errors.number && touched.number &&<Error>{errors.number}</Error>}
             </FieldForm>    
             <ButtonForm type="submit">{isFormLoading ? 'Adding...' : 'Add contact'}
-                <BsPersonPlus size={18}/>
+                <BsPersonPlus />
             </ButtonForm>        
         </BoxForm> 
     );
 };
     
 export default ContactEditor;
+
+ContactEditor.propsType = {
+  onSubmit: PropTypes.func.isRequired,
+}
 

@@ -4,7 +4,8 @@ import { Button } from "components/Button/Button";
 import { ContactText, ContactPhone } from "./Contact.styled";
 import { BsFillPersonFill } from 'react-icons/bs';
 import { AiOutlineDelete } from 'react-icons/ai';
-import { BsTelephonePlus } from 'react-icons/bs';
+import { MdPhoneIphone } from 'react-icons/md';
+
 import { Box } from '../Box/Box';
 import PropTypes from 'prop-types';
 
@@ -21,7 +22,7 @@ export const Contact = ({ id, name, number } ) => {
           {name}
         </ContactText>
         <ContactPhone>
-          <BsTelephonePlus size={17} color={"#1976d2"} />
+          <MdPhoneIphone />
           {number}
         </ContactPhone>
       </Box>

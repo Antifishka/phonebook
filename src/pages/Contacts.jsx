@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import ContactEditor from 'components/ContactEditor/ContactEditor';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from "components/Filter/Filter";
+import { Modal } from 'components/Modal/Modal';
 import { Loader } from "components/Loader/Loader";
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { selectIsLoading, selectError } from 'redux/contacts/contacts-selectors';
@@ -14,6 +15,9 @@ export default function Contacts() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => setIsModalOpen(state => !state);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -27,9 +31,16 @@ export default function Contacts() {
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
-      <ContactEditor />
-      <Filter />
+      
+      <Filter onClick={toggleModal} />
+      
       {showContacs ? <Loader /> : <ContactList />}
+
+      {isModalOpen && (
+        <Modal onClose={toggleModal}>
+          <ContactEditor onAdd={toggleModal} />
+        </Modal>
+      )}
     </Box>
   );
 }

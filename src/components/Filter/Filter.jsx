@@ -7,7 +7,7 @@ import { theme } from "theme";
 import { Button } from "components/Button/Button";
 import { BsPersonPlus } from 'react-icons/bs';
 
-export const Filter = ({ onChange }) => {
+export const Filter = ({onClick}) => {
     const filter = useSelector(selectFilter);
     const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ export const Filter = ({ onChange }) => {
             gridGap={[2, 2, 3]}
             borderRadius={theme.radii.box}
             boxShadow={theme.shadows.box}
-        backgroundColor={theme.colors.white}>
+            backgroundColor={theme.colors.white}>
             <FieldFilter htmlFor="">
                 <InputFilter
                     type="text"
@@ -37,8 +37,9 @@ export const Filter = ({ onChange }) => {
                     onChange={changeFilter}
                 />
             </FieldFilter>
-            <Button>
-                <BsPersonPlus size={24}/>
+            
+            <Button onClick={onClick} aria-label="Add contact">
+                <BsPersonPlus size={18}/>
             </Button>
         </Box>
     );

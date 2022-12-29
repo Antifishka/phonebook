@@ -13,7 +13,6 @@ export const AppBar = () => {
       justifyContent="space-between"
       alignItems="center"
       p="8px 0"
-      mb={3}
       borderBottom={theme.borders.normal}
       as="header">
       <Navigation />

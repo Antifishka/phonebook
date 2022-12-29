@@ -36,7 +36,7 @@ export const ContactItem = styled.li`
         transform: scale(1.02);
         width: 100%;
         right: 0;
-        z-index: 10;
+        z-index: 2;
         padding: ${p => p.theme.space[4]}px;
         
         border-top: ${p => p.theme.borders.none}; 

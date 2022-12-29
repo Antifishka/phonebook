@@ -16,7 +16,7 @@ export const UserMenu = () => {
       gridGap={[1, 1, 2]}
       alignItems="center"
       fontWeight={theme.fontWeights.bold}>
-      <FaUserLock color={"#1976d2"}/>
+      <FaUserLock color={theme.colors.accent}/>
       <p>{user.name}</p>
       <Button type="button" onClick={() => dispatch(logOut())}>
         Logout
