@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { selectFilter } from "redux/filter/filter-selectors";
-import { setFilter } from "redux/contacts/contacts-slice";
-import { FieldFilter, InputFilter } from "./Filter.styled";
+import { setFilter } from "redux/filter/filter-slice";
+import { FieldFilter, InputFilter, IconForm } from "./Filter.styled";
 import { Box } from "components/Box/Box";
 import { theme } from "theme";
 import { Button } from "components/Button/Button";
 import { BsPersonPlus } from 'react-icons/bs';
+import { FcSearch } from 'react-icons/fc';
 
 export const Filter = ({onClick}) => {
     const filter = useSelector(selectFilter);
@@ -30,10 +31,11 @@ export const Filter = ({onClick}) => {
             boxShadow={theme.shadows.box}
             backgroundColor={theme.colors.white}>
             <FieldFilter htmlFor="">
+                <IconForm><FcSearch size={16} /></IconForm>
                 <InputFilter
                     type="text"
                     value={filter}
-                    placeholder="Ivan Petrov"
+                    placeholder="Search by name"
                     onChange={changeFilter}
                 />
             </FieldFilter>

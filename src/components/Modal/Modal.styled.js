@@ -8,8 +8,6 @@ export const Content = styled.div`
     max-width: ${p => p.theme.sizes.mediumWidth};
     min-width: ${p => p.theme.sizes.minWidth};
     width: 100%;
-    margin-left: ${p => p.theme.space[4]}px;
-    margin-right: ${p => p.theme.space[4]}px;
     padding: ${p => p.theme.space[5]}px;
     background-color: ${p => p.theme.colors.white};
     border-radius: ${p => p.theme.radii.box};
