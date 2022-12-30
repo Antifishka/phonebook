@@ -2,15 +2,25 @@ import styled from '@emotion/styled';
 import { ButtonStyled } from 'components/Button/Button.styled';
 import { theme } from 'theme';
 
-export const BoxForm = styled.form`
+export const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
     gap: ${p => p.theme.space[4]}px;
+    max-width: ${p => p.theme.sizes.mediumWidth};
+    min-width: ${p => p.theme.sizes.minWidth};
+    padding: ${p => p.theme.space[4]}px;
+    margin-top: ${p => p.theme.space[4]}px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: ${p => p.theme.colors.white};
+    border-radius: ${p => p.theme.radii.box};
+    box-shadow: ${p => p.theme.shadows.box};
 
     text-align: center;
 `;
 
-export const FieldForm = styled.label`
+export const Label = styled.label`
     position: relative;   
     width: 100%;
     text-align: left;
@@ -21,7 +31,7 @@ export const FieldForm = styled.label`
     }
 `;
 
-export const InputForm = styled.input`
+export const Input = styled.input`
     margin-top: ${p => p.theme.space[1]}px; 
     padding-top: ${p => p.theme.space[3]}px;
     padding-bottom: ${p => p.theme.space[3]}px;
@@ -47,7 +57,7 @@ export const IconForm = styled.div`
     left: ${p => p.theme.space[3]}px;
 `;
 
-export const ButtonForm = styled(ButtonStyled)`
+export const Button = styled(ButtonStyled)`
     display: flex;
     align-items: center;;
     gap: ${p => p.theme.space[2]}px;
