@@ -87,7 +87,7 @@ const ContactEditor = ({onAdd}) => {
                 {errors.name && touched.name && <Error>{errors.name}</Error>}
             </FieldForm>
             <FieldForm htmlFor={numberId}>Phone number
-                <IconForm><FaPhoneAlt size={15} /></IconForm>
+                <IconForm><FaPhoneAlt size={14} /></IconForm>
                 <InputForm
                     type="tel"
                     name="number"

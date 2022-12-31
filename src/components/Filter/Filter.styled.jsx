@@ -13,7 +13,7 @@ export const InputFilter = styled.input`
     padding-right: ${p => p.theme.space[3]}px;
     width: 100%;
     font: inherit;
-    border: ${p => p.theme.borders.normal};
+    border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: ${p => p.theme.radii.normal};
     
     background-color: inherit;

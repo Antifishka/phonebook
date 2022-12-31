@@ -1,6 +1,10 @@
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
-import { Container } from './RegisterForm.styled';
+import { FormContainer, Label, Input, Button, IconForm } from './RegisterForm.styled';
+import { FaUserEdit } from 'react-icons/fa';
+import { MdEmail, MdLock } from 'react-icons/md';
+import { theme } from 'theme';
+import { Box } from "components/Box/Box";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -19,20 +23,26 @@ export const RegisterForm = () => {
   };
 
   return (
-    <Container  onSubmit={handleSubmit} autoComplete="off">
-      <label >
+    <FormContainer onSubmit={handleSubmit} autoComplete="off">
+      <Box fontSize={theme.fontSizes.l}
+        fontWeight={theme.fontWeights.bold}
+        as="h2">Register form</Box>
+      <Label >
         Username
-        <input type="text" name="name" />
-      </label>
-      <label >
+        <IconForm><FaUserEdit size={15} /></IconForm>
+        <Input type="text" name="name" placeholder="Antifishka"/>
+      </Label>
+      <Label >
         Email
-        <input type="email" name="email" />
-      </label>
-      <label >
+        <IconForm><MdEmail size={15} /></IconForm>
+        <Input type="email" name="email" placeholder="example@mail.com"/>
+      </Label>
+      <Label >
         Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Register</button>
-    </Container>
+        <IconForm><MdLock size={15} /></IconForm>
+        <Input type="password" name="password" placeholder="Example123"/>
+      </Label>
+      <Button type="submit">Register</Button>
+    </FormContainer>
   );
 };

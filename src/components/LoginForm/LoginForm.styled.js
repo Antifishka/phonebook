@@ -38,7 +38,7 @@ export const Input = styled.input`
     padding-left: 26px;
     padding-right: ${p => p.theme.space[3]}px;
     width: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: ${p => p.theme.radii.normal};
 
     font: inherit;
@@ -53,7 +53,7 @@ export const Input = styled.input`
 
 export const IconForm = styled.div`
     position: absolute;
-    top: 29px;
+    top: 30px;
     left: ${p => p.theme.space[3]}px;
 `;
 

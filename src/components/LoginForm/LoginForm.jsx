@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
-import { FormContainer, Label, Input, Button } from './LoginForm.styled';
+import { FormContainer, Label, Input, Button, IconForm } from './LoginForm.styled';
+import { MdEmail, MdLock } from 'react-icons/md';
 import { theme } from 'theme';
 import { Box } from "components/Box/Box";
 
@@ -26,10 +27,12 @@ export const LoginForm = () => {
         as="h2">Login form</Box>
       <Label >
         Email
+        <IconForm><MdEmail size={15} /></IconForm>
         <Input type="email" name="email" placeholder="example@mail.com" />
       </Label >
       <Label >
         Password
+        <IconForm><MdLock size={15} /></IconForm>
         <Input type="password" name="password" placeholder="Example123" />
       </Label >
       <Button type="submit">Login</Button>
