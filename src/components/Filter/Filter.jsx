@@ -6,7 +6,8 @@ import { Box } from "components/Box/Box";
 import { theme } from "theme";
 import { Button } from "components/Button/Button";
 import { BsPersonPlus } from 'react-icons/bs';
-import { FcSearch} from 'react-icons/fc';
+import { FcSearch } from 'react-icons/fc';
+import PropTypes from 'prop-types';
 
 export const Filter = ({onClick}) => {
     const filter = useSelector(selectFilter);
@@ -45,4 +46,8 @@ export const Filter = ({onClick}) => {
             </Button>
         </Box>
     );
-};   
+}; 
+
+Filter.propsType = {
+  onClick: PropTypes.func.isRequired,
+}

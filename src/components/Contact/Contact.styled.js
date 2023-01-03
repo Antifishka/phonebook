@@ -1,15 +1,20 @@
 import styled from '@emotion/styled';
 
-export const ContactText = styled.p`
-    display: flex;
-    align-items: center;;
-    gap: ${p => p.theme.space[2]}px;
-`
+export const Avatar = styled.img`
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    width: 50px;
+`;
 
-export const ContactPhone = styled.p`
+export const Name = styled.p`
     display: flex;
-    align-items: center;;
+    align-items: center;
     gap: ${p => p.theme.space[2]}px;
-    min-width: 220px;
-    text-align: left;
-`
+`;
+
+export const Phone = styled.p`
+    display: flex;
+    align-items: center;
+    gap: ${p => p.theme.space[2]}px;
+`;

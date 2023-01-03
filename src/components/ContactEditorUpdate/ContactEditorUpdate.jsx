@@ -1,11 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "redux/contacts/contacts-operations";
+import { updateContact } from "redux/contacts/contacts-operations";
 import { selectContacts } from "redux/contacts/contacts-selectors";
 import { FaUserEdit, FaPhoneAlt } from 'react-icons/fa';
-import { BsPersonPlus } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
-import { BoxForm, FieldForm, InputForm, IconForm, ButtonForm, Error } from './ContactEditor.styled';
+import { BoxForm, FieldForm, InputForm, IconForm, ButtonForm, Error } from './ContactEditorUpdate.styled';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
@@ -29,37 +28,31 @@ const basicSchema = yup.object().shape({
         .required('Number is required'),
 });
  
-const ContactEditor = ({onAdd}) => {
+const ContactEditorUpdate = ({onUpdate, id}) => {
     const contacts = useSelector(selectContacts);
     const dispatch = useDispatch();
 
+    const contactById = contacts.filter(contact => contact.id === id);
+
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
-            name: '',
-            number: '',
+            name: contactById[0].name,
+            number: contactById[0].number,
         },
         validationSchema: basicSchema,
         onSubmit: ({ name, number }, { resetForm }) => {
             console.log(name, number);
 
-            const normalizedName = name.toLowerCase();
-
-            const checkByName = contacts.find(contact =>
-                contact.name.toLowerCase() === normalizedName);
-
-            if (checkByName) {
-                return toast(`${name} is already in contacts.`, { icon: 'ℹ️'});
-            };
-
             const contact = {
+                id,
                 name,
                 number,
             };
 
-            dispatch(addContact(contact));
-            toast.success('Contact added!');
+            dispatch(updateContact(contact));
+            toast.success('Contact updated');
 
-            onAdd();
+            onUpdate();
 
             resetForm();
         },
@@ -72,7 +65,7 @@ const ContactEditor = ({onAdd}) => {
         <BoxForm onSubmit={handleSubmit}>
             <Box fontSize={theme.fontSizes.l}
                 fontWeight={theme.fontWeights.bold}
-                as="strong">Create new contact</Box>
+                as="strong">Enter your changes</Box>
             <FieldForm htmlFor={nameId}>Name
                 <IconForm><FaUserEdit size={15} /></IconForm>
                 <InputForm
@@ -82,7 +75,7 @@ const ContactEditor = ({onAdd}) => {
                     value={values.name}
                     placeholder="Alexander Repeta"
                     onChange={handleChange}
-                    onBlur={handleBlur} /> 
+                    onBlur={handleBlur}/> 
                 {errors.name && touched.name && <Error>{errors.name}</Error>}
             </FieldForm>
             <FieldForm htmlFor={numberId}>Phone number
@@ -97,16 +90,13 @@ const ContactEditor = ({onAdd}) => {
                     onBlur={handleBlur} />
                 {errors.number && touched.number &&<Error>{errors.number}</Error>}
             </FieldForm>    
-            <ButtonForm type="submit">Add contact
-                <BsPersonPlus />
-            </ButtonForm>        
+            <ButtonForm type="submit">Update</ButtonForm>        
         </BoxForm> 
     );
 };
     
-export default ContactEditor;
+export default ContactEditorUpdate;
 
-ContactEditor.propsType = {
-  onAdd: PropTypes.func.isRequired,
+ContactEditorUpdate.propsType = {
+    onUpdate: PropTypes.func.isRequired,
 }
-
