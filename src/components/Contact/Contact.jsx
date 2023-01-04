@@ -4,12 +4,11 @@ import { deleteContact } from "redux/contacts/contacts-operations";
 import { Modal } from "components/Modal/Modal";
 import ContactEditorUpdate from 'components/ContactEditorUpdate/ContactEditorUpdate';
 import { Button } from "components/Button/Button";
-import { Avatar, Name, Phone } from "./Contact.styled";
+import { ContactInfo, Avatar, Name, Phone } from "./Contact.styled";
 import { BsFillPersonFill } from 'react-icons/bs';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { MdPhoneIphone, MdOutlineEdit } from 'react-icons/md';
 import { TbPhoneCall } from 'react-icons/tb';
-
 import { Box } from '../Box/Box';
 import PropTypes from 'prop-types';
 
@@ -22,11 +21,11 @@ export const Contact = ({ id, name, number } ) => {
   
   return (
     <Box display="flex" alignItems="center" justifyContent="space-between">
-      <Box display="flex" alignItems="center" gridGap={3}>
+      <ContactInfo>
         <Avatar
           src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
           alt="avatar" />
-        <Box display="flex" flexDirection="column" alignItems="flex-start" gridGap={2}>
+        <Box display="flex" flexDirection="column" alignItems="flex-start" gridGap={[1,2]}>
           <Name>
           <BsFillPersonFill />
           {name}
@@ -36,9 +35,9 @@ export const Contact = ({ id, name, number } ) => {
             {number}
           </Phone>
         </Box>
-      </Box>
+      </ContactInfo>
 
-      <Box display="flex" alignItems="center" gridGap={2}>
+      <Box display="flex" alignItems="center" gridGap={[1,2]}>
         <Button type="button" >
           <TbPhoneCall size={18} />
         </Button>

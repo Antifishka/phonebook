@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://Antifishka.github.io/phonebook/",
   "dependencies": {
+    "@chakra-ui/react": "^2.4.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@redux-devtools/extension": "^3.2.3",
@@ -14,6 +15,7 @@
     "axios": "^1.2.1",
     "emotion-normalize": "^11.0.1",
     "formik": "^2.2.9",
+    "framer-motion": "^8.1.7",
     "nanoid": "^4.0.0",
     "normalize.css": "^8.0.1",
     "react": "^18.1.0",

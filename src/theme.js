@@ -1,4 +1,6 @@
-const breakpoints = ['320px', '768px', '1200px'];
+const br = [320, 480, 768, 1200];
+
+export const mq = br.map(bp => `@media (min-width: ${bp}px)`);
 
 export const theme = {
     colors: {
