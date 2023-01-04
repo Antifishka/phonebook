@@ -3,18 +3,20 @@ import { Box } from "components/Box/Box";
 export default function Home() {
   return (
     <Box minHeight= 'calc(100vh - 50px)'
-      display= 'flex'
+      display='flex'
+      flexDirection='column'
       alignItems= 'center'
       justifyContent= 'center'>
       <Box fontWeight= '700'
         fontSize={[5,6,7]}
         textAlign='center'
         as="h1">
-        "Wellcome to Phonebook"{' '}
-        <span role="img" aria-label="Greeting icon">
-          💁‍♀️
-        </span>
+        Wellcome to Phonebook{' '}
       </Box>
+      <img src="https://play-lh.googleusercontent.com/7O6Mvzvsy_gxPY7IPHN5iJWo9CB9CEeUvs8Ha1m1v0fctHD-tLwBR6TycZ45V-5aGkE=w480-h960-rw"
+        alt="phonebook"
+        width="200px" />
     </Box>
   );
 }
+
