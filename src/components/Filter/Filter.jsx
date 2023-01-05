@@ -18,16 +18,12 @@ export const Filter = ({onClick}) => {
     };
 
     return (
-        <Box minWidth={theme.sizes.minWidth}
+        <Box display="flex" alignItems="center" justifyContaent="center" gridGap={[2, 2, 3]}
+            maxWidth={theme.sizes.mediumWidth}
             mb={3}
             mx="auto"
             p={3}
             textAlign="left"
-            maxWidth={theme.sizes.mediumWidth}
-            display="flex"
-            alignItems="center"
-            justifyContaent="center"
-            gridGap={[2, 2, 3]}
             borderRadius={theme.radii.box}
             boxShadow={theme.shadows.box}
             backgroundColor={theme.colors.white}>

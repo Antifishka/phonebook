@@ -1,15 +1,14 @@
 import styled from '@emotion/styled';
-import { mq } from "../../theme"
 
 export const ButtonStyled = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
     gap: ${p => p.theme.space[2]}px;
-    padding-top: ${p => p.theme.space[1]}px;
-    padding-bottom: ${p => p.theme.space[1]}px;
-    padding-left: ${p => p.theme.space[2]}px;
-    padding-right: ${p => p.theme.space[2]}px;
+    padding-top: ${p => p.theme.space[2]}px;
+    padding-bottom: ${p => p.theme.space[2]}px;
+    padding-left: ${p => p.theme.space[3]}px;
+    padding-right: ${p => p.theme.space[3]}px;
     border-radius: ${p => p.theme.radii.normal};
     border: ${p => p.theme.borders.button};
     box-shadow: ${p => p.theme.shadows.button};
@@ -20,13 +19,6 @@ export const ButtonStyled = styled.button`
     color: inherit;
 
     transition: ${p => p.theme.transition.main};
-
-    ${mq[1]} {
-        padding-top: ${p => p.theme.space[2]}px;
-        padding-bottom: ${p => p.theme.space[2]}px;
-        padding-left: ${p => p.theme.space[3]}px;
-        padding-right: ${p => p.theme.space[3]}px; 
-    };
 
     :hover,
     :active{

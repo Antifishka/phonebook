@@ -7,7 +7,7 @@ export const theme = {
         mainText: '#2f2f37',
         background: '#e2e5e8',
         white: '#fff',
-        accent: '#1976d2',
+        accent: '#2063e4',
         error: 'red',
     },
     space: [0, 2, 4, 8, 16, 32, 64, 128, 256],

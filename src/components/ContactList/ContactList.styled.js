@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Contacts = styled.ul`
     position: relative;
-    min-width: ${p => p.theme.sizes.minWidth};
     max-width: ${p => p.theme.sizes.mediumWidth};
     margin-left: auto;
     margin-right: auto;
