@@ -31,7 +31,7 @@ export const Contact = ({ id, name, number } ) => {
         <Box display="flex" flexDirection="column" alignItems="flex-start" gridGap={[1, 2]}
           minWidth="114px">
           <Name>
-          <BsFillPersonFill />
+            <BsFillPersonFill />
           {name}
           </Name>
           <Phone>

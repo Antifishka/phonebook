@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
+import { mq } from "../../theme"
 
 export const Contacts = styled.ul`
     position: relative;
     max-width: ${p => p.theme.sizes.mediumWidth};
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 8px auto;
     background-color: ${p => p.theme.colors.white};
     padding: ${p => p.theme.space[4]}px;
     padding-top: ${p => p.theme.space[3]}px;
@@ -13,6 +13,10 @@ export const Contacts = styled.ul`
     box-shadow: ${p => p.theme.shadows.box};
 
     text-align: center;
+
+    ${mq[2]} {
+        margin-bottom: ${p => p.theme.space[4]}px;
+        };
 `;
 
 export const ContactItem = styled.li`
@@ -47,4 +51,19 @@ export const ContactItem = styled.li`
 
         background-color: ${p => p.theme.colors.white};
     } 
+`;
+
+export const Counter = styled.p`
+    color: ${p => p.theme.colors.accent};
+    text-align: center;
+    font-weight: ${p => p.theme.fontWeights.medium};
+    font-size: ${p => p.theme.fontSizes.xs};
+
+    ${mq[1]} {
+        font-size: ${p => p.theme.fontSizes.s};
+        }; 
+
+    ${mq[2]} {
+        font-size: ${p => p.theme.fontSizes.m};
+        }; 
 `;

@@ -27,8 +27,8 @@ export const StyledLink = styled(NavLink)`
     align-items: center;
     padding-top: ${p => p.theme.space[2]}px;
     padding-bottom: ${p => p.theme.space[2]}px;
-    padding-left: ${p => p.theme.space[3]}px;
-    padding-right: ${p => p.theme.space[3]}px;
+    padding-left: ${p => p.theme.space[2]}px;
+    padding-right: ${p => p.theme.space[2]}px;
     border-radius: ${p => p.theme.radii.normal};
    
     color: ${p => p.theme.colors.mainText};
@@ -39,7 +39,7 @@ export const StyledLink = styled(NavLink)`
 
     transition: ${p => p.theme.transition.main};
 
-    ${mq[2]} {
+    ${mq[1]} {
         padding-top: ${p => p.theme.space[3]}px;
         padding-bottom: ${p => p.theme.space[3]}px;
         padding-left: ${p => p.theme.space[4]}px;

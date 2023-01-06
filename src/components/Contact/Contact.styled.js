@@ -19,7 +19,8 @@ export const ContactInfo = styled.div`
 export const Avatar = styled.img`
     border-radius: 50%;
     overflow: hidden;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
+    background-color: ${p => p.theme.colors.accent};
     width: 30px;
 
     ${mq[0]} {

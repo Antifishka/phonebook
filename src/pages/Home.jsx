@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { Box } from "components/Box/Box";
 
 export default function Home() {
@@ -6,7 +7,11 @@ export default function Home() {
       display='flex'
       flexDirection='column'
       alignItems= 'center'
-      justifyContent= 'center'>
+      justifyContent='center'>
+      <Helmet>
+        <title>PhoneBook</title>
+      </Helmet>
+
       <Box fontWeight= '700'
         fontSize={[5,6,7]}
         textAlign='center'
