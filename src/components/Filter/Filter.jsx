@@ -6,7 +6,7 @@ import { Box } from "components/Box/Box";
 import { theme } from "theme";
 import { Button } from "components/Button/Button";
 import { BsPersonPlus } from 'react-icons/bs';
-import { FcSearch } from 'react-icons/fc';
+import { FaSearch } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 export const Filter = ({onClick}) => {
@@ -28,7 +28,7 @@ export const Filter = ({onClick}) => {
             boxShadow={theme.shadows.box}
             backgroundColor={theme.colors.white}>
             <FieldFilter htmlFor="">
-                <IconForm><FcSearch size={17} /></IconForm>
+                <IconForm><FaSearch size={17} color={theme.colors.accent} /></IconForm>
                 <InputFilter
                     type="text"
                     value={filter}

@@ -1,5 +1,5 @@
 import { Box } from "components/Box/Box";
-import SyncLoader from "react-spinners/SyncLoader";
+import { CircularProgress } from '@chakra-ui/react'
 import { theme } from 'theme';
 
 export const Loader = () => (
@@ -7,7 +7,7 @@ export const Loader = () => (
         top={0} bottom={0} left={0} right={0}
         display="flex" justifyContent="center" alignItems="center"
         height="100%">
-        <SyncLoader color={theme.colors.accent}/>
+        <CircularProgress isIndeterminate color={theme.colors.accent}/>
     </Box>
   
 );

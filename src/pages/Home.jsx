@@ -7,7 +7,8 @@ export default function Home() {
       display='flex'
       flexDirection='column'
       alignItems= 'center'
-      justifyContent='center'>
+      justifyContent='center'
+      as="main">
       <Helmet>
         <title>PhoneBook</title>
       </Helmet>

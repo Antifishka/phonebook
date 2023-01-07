@@ -9,7 +9,6 @@ export const FormContainer = styled.form`
     max-width: ${p => p.theme.sizes.mediumWidth};
     min-width: ${p => p.theme.sizes.minWidth};
     padding: ${p => p.theme.space[4]}px;
-    margin-top: ${p => p.theme.space[4]}px;
     margin-left: auto;
     margin-right: auto;
 
