@@ -1,6 +1,6 @@
 import { useAuth } from '../../hooks';
 import { useMediaQuery } from 'usehooks-ts';
-import { Logo, StyledLink } from './Navigation.styled';
+import { Logo, LogoImg, LogoText, StyledLink } from './Navigation.styled';
 import { AiFillHome } from 'react-icons/ai';
 import { MdPermContactCalendar } from 'react-icons/md';
 import { Box } from "components/Box/Box";
@@ -16,7 +16,7 @@ export const Navigation = () => {
         <img src="https://play-lh.googleusercontent.com/7O6Mvzvsy_gxPY7IPHN5iJWo9CB9CEeUvs8Ha1m1v0fctHD-tLwBR6TycZ45V-5aGkE=w480-h960-rw"
           alt="phonebook"
           width="32px" />
-        {matchesDes ? 'PhoneBook' : ''}
+        <p>{matchesDes ? 'PhoneBook' : ''}</p>
       </Logo>
       <StyledLink to="/">
         {matchesMob ? 'Home' : <AiFillHome size={18}/>}
@@ -29,3 +29,5 @@ export const Navigation = () => {
     </Box>
   );
 };
+
+// https://play-lh.googleusercontent.com/7O6Mvzvsy_gxPY7IPHN5iJWo9CB9CEeUvs8Ha1m1v0fctHD-tLwBR6TycZ45V-5aGkE=w480-h960-rw

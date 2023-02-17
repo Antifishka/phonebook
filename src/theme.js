@@ -33,7 +33,8 @@ export const theme = {
         // heading: 1.125,
     },
     sizes: {
-        minWidth: '288px',
+        minWidth: '256px',
+        formWidth: '400px',
         mediumWidth: '512px',
         maxWidth: '768px',
     },

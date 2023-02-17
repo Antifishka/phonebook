@@ -6,8 +6,7 @@ export const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
     gap: ${p => p.theme.space[4]}px;
-    max-width: ${p => p.theme.sizes.mediumWidth};
-    min-width: ${p => p.theme.sizes.minWidth};
+    max-width: ${p => p.theme.sizes.formWidth};
     padding: ${p => p.theme.space[4]}px;
     margin-left: auto;
     margin-right: auto;

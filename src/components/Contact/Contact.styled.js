@@ -77,6 +77,10 @@ export const BoxButton = styled.div`
     };
 `;
 
+export const CallLink = styled.a`
+    color: inherit;
+`
+
 export const ContactButton = styled(ButtonStyled)`
     padding-top: ${p => p.theme.space[1]}px;
     padding-bottom: ${p => p.theme.space[1]}px;

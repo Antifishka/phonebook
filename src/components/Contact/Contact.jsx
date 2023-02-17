@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/contacts/contacts-operations";
 import { Modal } from "components/Modal/Modal";
 import ContactEditorUpdate from 'components/ContactEditorUpdate/ContactEditorUpdate';
-import { ContactInfo, Avatar, Name, Phone, BoxButton, ContactButton } from "./Contact.styled";
+import { ContactInfo, Avatar, Name, Phone, BoxButton, CallLink, ContactButton } from "./Contact.styled";
 import { BsFillPersonFill } from 'react-icons/bs';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { MdPhoneIphone, MdOutlineEdit } from 'react-icons/md';
@@ -42,9 +42,11 @@ export const Contact = ({ id, name, number } ) => {
       </ContactInfo>
 
       <BoxButton  >
-        <ContactButton type="button" >
-          <TbPhoneCall size={matches ? "18" : "15"} />
-        </ContactButton>
+        <CallLink href={`tel:${number}`} color="inherit">
+          <ContactButton type="button" >
+            <TbPhoneCall size={matches ? "18" : "15"} />
+          </ContactButton>
+        </CallLink>  
 
         <ContactButton type="button" onClick={toggleModal} aria-label="Edit contact">
           <MdOutlineEdit size={matches ? "18" : "15"}  />
