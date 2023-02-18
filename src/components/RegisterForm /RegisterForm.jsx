@@ -24,7 +24,7 @@ const userSchema = yup.object().shape({
       .required('Password is required'),
 });
 
-export const RegisterForm = ({onAdd}) => {
+export const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
@@ -35,6 +35,7 @@ export const RegisterForm = ({onAdd}) => {
     },
     validationSchema: userSchema,
     onSubmit: ({ name, email, password }, { resetForm }) => {
+      console.log(name, email, password)
       dispatch(
         authOperations.register({
           name,

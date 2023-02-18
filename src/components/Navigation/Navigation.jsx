@@ -1,6 +1,6 @@
 import { useAuth } from '../../hooks';
 import { useMediaQuery } from 'usehooks-ts';
-import { Logo, LogoImg, LogoText, StyledLink } from './Navigation.styled';
+import { Logo, StyledLink } from './Navigation.styled';
 import { AiFillHome } from 'react-icons/ai';
 import { MdPermContactCalendar } from 'react-icons/md';
 import { Box } from "components/Box/Box";

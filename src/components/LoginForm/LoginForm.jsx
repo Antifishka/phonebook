@@ -1,24 +1,42 @@
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
-import { FormContainer, Label, Input, Button, IconForm } from './LoginForm.styled';
+import { FormContainer, Label, Input, Button, IconForm, Error } from './LoginForm.styled';
 import { MdEmail, MdLock } from 'react-icons/md';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import { theme } from 'theme';
 import { Box } from "components/Box/Box";
+
+const userSchema = yup.object().shape({
+    email: yup
+      .string()
+      .email('Invalid email')
+      .required('Email is required'),
+    password: yup
+      .string()
+      .min(6, 'Too Short!')
+      .required('Password is required'),
+});
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    dispatch(
-      authOperations.logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
-  };
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: userSchema,
+    onSubmit: ({ email, password }, { resetForm }) => {
+      dispatch(
+        authOperations.logIn({
+          email,
+          password,
+      }));  
+
+      resetForm();
+    },
+  });
 
   return (
     <FormContainer onSubmit={handleSubmit} autoComplete="off">
@@ -28,12 +46,26 @@ export const LoginForm = () => {
       <Label >
         Email
         <IconForm><MdEmail size={15} /></IconForm>
-        <Input type="email" name="email" placeholder="example@mail.com" />
+        <Input
+          type="email"
+          name="email"
+          value={values.email}
+          placeholder="example@mail.com"
+          onChange={handleChange}
+          onBlur={handleBlur} />
+        {errors.email && touched.email && <Error>{errors.email}</Error>}
       </Label >
       <Label >
         Password
         <IconForm><MdLock size={15} /></IconForm>
-        <Input type="password" name="password" placeholder="Example123" />
+        <Input
+          type="password"
+          name="password"
+          value={values.password}
+          placeholder="Example123"
+          onChange={handleChange}
+          onBlur={handleBlur}/>
+        {errors.password && touched.password && <Error>{errors.password}</Error>}
       </Label >
       <Button type="submit">Login</Button>
     </FormContainer>

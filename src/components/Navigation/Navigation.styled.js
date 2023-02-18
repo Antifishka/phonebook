@@ -21,84 +21,6 @@ export const Logo = styled(NavLink)`
     };
 `;
 
-export const LogoImg = styled.img`
-    /* animation: swirl-in-fwd 0.6s ease-out both;
-
-    @-webkit-keyframes swirl-in-fwd {
-        0% {
-            -webkit-transform: rotate(-540deg) scale(0);
-            transform: rotate(-540deg) scale(0);
-            opacity: 0;
-        }
-
-        100% {
-            -webkit-transform: rotate(0) scale(1);
-            transform: rotate(0) scale(1);
-            opacity: 1;
-        }
-    }
-
-    @keyframes swirl-in-fwd {
-        0% {
-            -webkit-transform: rotate(-540deg) scale(0);
-            transform: rotate(-540deg) scale(0);
-            opacity: 0;
-        }
-
-        100% {
-            -webkit-transform: rotate(0) scale(1);
-            transform: rotate(0) scale(1);
-            opacity: 1;
-        }
-    }
-
-    ${mq[1]} {
-            animation: none;
-        }; */
-`
-
-export const LogoText = styled.p`
-    animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-
-    @-webkit-keyframes tracking-in-contract-bck {
-        0% {
-            letter-spacing: 1em;
-            -webkit-transform: translateZ(400px);
-            transform: translateZ(400px);
-            opacity: 0;
-        }
-
-        40% {
-            opacity: 0.6;
-        }
-
-        100% {
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes tracking-in-contract-bck {
-        0% {
-            letter-spacing: 1em;
-            -webkit-transform: translateZ(400px);
-            transform: translateZ(400px);
-            opacity: 0;
-        }
-
-        40% {
-            opacity: 0.6;
-        }
-
-        100% {
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-            opacity: 1;
-        }
-    }
-`
-
 export const StyledLink = styled(NavLink)`
     display: flex;
     justify-content: center;
@@ -126,12 +48,12 @@ export const StyledLink = styled(NavLink)`
     
     &.active {
         color: ${p => p.theme.colors.white};
-        background-color: #2063e4;
+        background-color: ${p => p.theme.colors.accent};
         box-shadow: ${p=>p.theme.shadows.button};
     }
 
     :hover:not(.active),
     :focus-visible:not(.active){
-        color: #2063e4;
+        color: ${p => p.theme.colors.accent};
     }
 `;
