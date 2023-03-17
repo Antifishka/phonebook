@@ -16,6 +16,8 @@ export const FieldForm = styled.label`
     text-align: left;
     font-size: ${p => theme.fontSizes.s};
 
+    transition: ${p => p.theme.transition.main};
+
     :focus-within{
         color: ${p => p.theme.colors.accent};
     }
@@ -38,6 +40,10 @@ export const InputForm = styled.input`
 
     ::placeholder {
         font-size: ${p => theme.fontSizes.s};
+    }
+
+    :focus-within{
+        color: ${p => p.theme.colors.accent};
     }
 `;
 

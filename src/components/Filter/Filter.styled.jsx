@@ -13,12 +13,17 @@ export const InputFilter = styled.input`
     padding-right: ${p => p.theme.space[3]}px;
     width: 100%;
     font: inherit;
+    outline: transparent;
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: ${p => p.theme.radii.normal};
     
     background-color: inherit;
 
     transition: ${p => p.theme.transition.main};
+
+    :focus{
+        border-color: ${p => p.theme.colors.accent};
+    }
 
     ::placeholder {
         font-size: ${p => p.theme.fontSizes.s};
